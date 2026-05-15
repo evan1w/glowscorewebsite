@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FoodScanner — Know Exactly What You're Eating</title>
-  <meta name="description" content="Scan any food barcode for instant body-impact scores. Leanness, skin, and bloat ratings grounded in peer-reviewed nutrition research. iOS." />
+  <title>glowscore — Scan any food. See how it hits your face.</title>
+  <meta name="description" content="Scan any food barcode. Get three scores in under three seconds: skin clarity, bloat, and leanness. No macros, no calorie obsession. iOS." />
 
-  <!-- Social cards -->
-  <meta property="og:title" content="FoodScanner — Know Exactly What You're Eating" />
-  <meta property="og:description" content="Scan any food. Get leanness, skin, and bloat scores grounded in peer-reviewed nutrition research." />
+  <meta property="og:title" content="glowscore — Scan any food. See how it hits your face." />
+  <meta property="og:description" content="Point your camera at a barcode — get skin, bloat, and leanness scores instantly." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="logo.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FoodScanner — Know Exactly What You're Eating" />
-  <meta name="twitter:description" content="Scan any food. Get leanness, skin, and bloat scores grounded in peer-reviewed nutrition research." />
+  <meta name="twitter:title" content="glowscore — Scan any food. See how it hits your face." />
+  <meta name="twitter:description" content="Point your camera at a barcode — get skin, bloat, and leanness scores instantly." />
   <meta name="twitter:image" content="logo.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,68 +20,75 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/jpeg" href="logo.jpg" />
   <link rel="apple-touch-icon" href="logo.jpg" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #080A0C;
-      --card:    #0F1215;
-      --green:   #3AE55A;
-      --yellow:  #F5C53A;
-      --blue:    #38B8F5;
-      --gold:    #C8A84B;
-      --red:     #F87171;
-      --white:   #FFFFFF;
-      --gray1:   #B4B4B9;
-      --gray2:   #2A2A2E;
-      --border:  rgba(58,229,90,0.07);
-      --border-subtle: rgba(255,255,255,0.06);
+      --bg:         #0F0E0C;
+      --card:       #1A1815;
+      --card-2:     #232019;
+      --line:       #2A2620;
+
+      --ink:        #F5F1E8;
+      --ink-soft:   #9A938A;
+      --ink-faint:  #5C574E;
+
+      --brand:      #FF5A3C;
+      --brand-deep: #C73B22;
+      --brand-soft: rgba(255,90,60,0.12);
+
+      --good:       #4ADE80;
+      --warn:       #F5B947;
+      --bad:        #FF6B5A;
+
+      --sage-fading:   #9A938A;
+      --sage-content:  #FF8C42;
+      --sage-sick:     #60A5FA;
+      --sage-hungry:   #A78BFA;
+      --sage-thriving: #4ADE80;
+      --sage-ascended: #FFC857;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
-      color: var(--white);
+      color: var(--ink);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.5;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Shared icon */
-    .ico { width: 22px; height: 22px; stroke: currentColor; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-    .ico-lg { width: 24px; height: 24px; }
-
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 16px 40px;
-      background: rgba(8,10,12,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(15,14,12,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo-box {
       width: 36px; height: 36px; border-radius: 9px;
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
     }
     .nav-logo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .nav-logo-text { font-size: 16px; font-weight: 800; color: var(--white); letter-spacing: -0.3px; }
+    .nav-logo-text { font-size: 24px; font-weight: 800; color: var(--ink); letter-spacing: -0.8px; }
     .nav-links { display: flex; gap: 28px; }
-    .nav-links a { font-size: 13px; font-weight: 500; color: var(--gray1); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
     .nav-cta {
-      background: linear-gradient(90deg, var(--green), var(--yellow));
-      color: #080A0C; font-size: 12px; font-weight: 800;
+      background: linear-gradient(90deg, var(--brand), var(--brand-deep));
+      color: #fff; font-size: 11px; font-weight: 800;
       letter-spacing: 1.5px; padding: 9px 20px; border-radius: 10px;
       text-decoration: none; border: none; cursor: pointer;
       transition: opacity 0.2s;
     }
     .nav-cta:hover { opacity: 0.85; }
-    @media (max-width: 720px) { .nav-links { display: none; } }
+    @media (max-width: 720px) { .nav-links { display: none; } nav { padding: 14px 20px; } }
 
     /* ── HERO ── */
     .hero {
@@ -90,94 +96,105 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       padding: 120px 24px 80px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .hero-glow {
       position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(58,229,90,0.12) 0%, transparent 70%);
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,90,60,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px; padding: 6px 14px;
-      font-size: 12px; font-weight: 600; color: var(--gray1);
-      margin-bottom: 22px;
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 12px; font-weight: 700; color: var(--ink-soft);
+      letter-spacing: 0.5px; margin-bottom: 22px;
     }
-    .hero-eyebrow .stars { color: var(--yellow); letter-spacing: 1px; font-size: 11px; }
+    .hero-eyebrow .stars { color: var(--warn); letter-spacing: 1px; font-size: 11px; }
     .hero-title {
       font-size: clamp(42px, 7vw, 82px);
       font-weight: 900; line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 20px;
-      max-width: 800px;
+      letter-spacing: -2px; margin-bottom: 20px; max-width: 820px;
     }
-    .hero-title span { color: var(--green); }
+    .hero-title .accent { color: var(--brand); }
     .hero-subtitle {
-      font-size: clamp(16px, 2.2vw, 20px);
-      color: var(--gray1); line-height: 1.6;
-      max-width: 540px; margin-bottom: 40px;
+      font-size: clamp(16px, 2.2vw, 19px);
+      color: var(--ink-soft); line-height: 1.65;
+      max-width: 520px; margin-bottom: 40px;
     }
     .hero-cta-row {
       display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center;
-      margin-bottom: 60px;
+      margin-bottom: 28px;
     }
     .btn-primary {
-      background: linear-gradient(90deg, var(--green), var(--yellow));
-      color: #080A0C; font-size: 13px; font-weight: 800;
+      background: linear-gradient(90deg, var(--brand), var(--brand-deep));
+      color: #fff; font-size: 13px; font-weight: 800;
       letter-spacing: 2px; padding: 17px 36px; border-radius: 14px;
       text-decoration: none; display: inline-block; border: none; cursor: pointer;
-      transition: transform 0.2s, opacity 0.2s; box-shadow: 0 0 40px rgba(58,229,90,0.3);
+      transition: transform 0.2s, opacity 0.2s;
+      box-shadow: 0 0 40px rgba(255,90,60,0.25);
     }
     .btn-primary:hover { transform: translateY(-2px); opacity: 0.92; }
     .appstore-badge {
       display: flex; align-items: center; gap: 10px;
-      background: var(--card); border: 1px solid var(--border-subtle);
+      background: var(--card); border: 1px solid var(--line);
       border-radius: 12px; padding: 11px 18px;
-      text-decoration: none; color: var(--white);
+      text-decoration: none; color: var(--ink);
       transition: border-color 0.2s;
     }
-    .appstore-badge:hover { border-color: rgba(255,255,255,0.2); }
-    .appstore-badge svg { width: 22px; height: 22px; fill: var(--white); }
+    .appstore-badge:hover { border-color: var(--brand); }
+    .appstore-badge svg { width: 22px; height: 22px; fill: var(--ink); }
     .appstore-badge-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .appstore-badge-text small { font-size: 9px; color: var(--gray1); letter-spacing: 0.5px; }
+    .appstore-badge-text small { font-size: 9px; color: var(--ink-soft); letter-spacing: 0.5px; }
     .appstore-badge-text strong { font-size: 14px; font-weight: 700; letter-spacing: -0.2px; }
-    .hero-trust { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-    .hero-trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray1); }
-    .hero-trust-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--green); }
+    .hero-trust { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; align-items: center; font-size: 12px; color: var(--ink-faint); }
+    .hero-trust-dot { color: var(--ink-faint); }
 
-    /* ── SAMPLE SCANS STRIP ── */
-    .samples-section { padding: 60px 24px 20px; max-width: 1100px; margin: 0 auto; }
-    .samples-label { text-align: center; font-size: 10px; font-weight: 700; color: var(--gray1); letter-spacing: 3px; margin-bottom: 24px; }
+    /* ── SECTION SHARED ── */
+    .section-eyebrow {
+      font-size: 10px; font-weight: 800; color: var(--brand);
+      letter-spacing: 3px; margin-bottom: 16px; text-transform: uppercase;
+    }
+    .section-title { font-size: clamp(28px, 4vw, 46px); font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
+    .section-subtitle { font-size: 16px; color: var(--ink-soft); line-height: 1.7; }
+
+    /* ── SAMPLE SCANS ── */
+    .samples-section { padding: 80px 24px 40px; max-width: 1100px; margin: 0 auto; }
+    .samples-label { text-align: center; font-size: 10px; font-weight: 800; color: var(--ink-soft); letter-spacing: 3px; margin-bottom: 28px; }
     .samples-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px;
     }
     .sample-card {
-      background: var(--card); border: 1px solid var(--border-subtle);
-      border-radius: 14px; padding: 16px;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 16px;
       display: flex; flex-direction: column; gap: 10px;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .sample-card:hover { border-color: rgba(58,229,90,0.2); }
-    .sample-brand { font-size: 9px; font-weight: 800; color: var(--green); letter-spacing: 1.5px; }
-    .sample-name { font-size: 13px; font-weight: 700; line-height: 1.3; min-height: 34px; }
-    .sample-scores { display: flex; gap: 6px; }
+    .sample-card:hover { border-color: var(--brand); transform: translateY(-2px); }
+    .sample-brand { font-size: 9px; font-weight: 800; color: var(--ink-soft); letter-spacing: 2px; text-transform: uppercase; }
+    .sample-name { font-size: 13px; font-weight: 700; line-height: 1.3; color: var(--ink); min-height: 34px; }
+    .sample-scores { display: flex; gap: 5px; }
     .sample-pill {
-      flex: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);
+      flex: 1; background: var(--card-2); border: 1px solid var(--line);
       border-radius: 8px; padding: 6px 4px; text-align: center;
-      font-size: 13px; font-weight: 800;
     }
-    .sample-pill small { display: block; font-size: 8px; color: var(--gray1); letter-spacing: 1px; font-weight: 700; margin-bottom: 2px; }
+    .sample-pill small { display: block; font-size: 8px; color: var(--ink-soft); letter-spacing: 1px; font-weight: 700; margin-bottom: 2px; }
+    .sample-pill span { font-size: 13px; font-weight: 800; }
+    .sample-flag {
+      display: inline-block;
+      background: rgba(255,107,90,0.1); border: 1px solid rgba(255,107,90,0.3);
+      border-radius: 100px; padding: 3px 8px;
+      font-size: 9px; font-weight: 700; color: var(--bad); letter-spacing: 0.5px;
+    }
 
-    /* ── SCREENSHOT CAROUSEL ── */
-    .screenshots-section { padding: 60px 0 60px; overflow: hidden; }
-    .screenshots-label { text-align: center; font-size: 10px; font-weight: 700; color: var(--gray1); letter-spacing: 3px; margin-bottom: 40px; }
+    /* ── SCREENSHOTS CAROUSEL ── */
+    .screenshots-section { padding: 60px 0; overflow: hidden; }
+    .screenshots-label { text-align: center; font-size: 10px; font-weight: 800; color: var(--ink-soft); letter-spacing: 3px; margin-bottom: 40px; }
     .carousel-track {
       display: flex; gap: 20px; padding: 10px 0 20px;
-      animation: scroll-left 28s linear infinite;
+      animation: scroll-left 30s linear infinite;
       width: max-content;
     }
     .carousel-track:hover { animation-play-state: paused; }
@@ -189,380 +206,341 @@
     /* Phone mockup */
     .phone {
       width: 200px; height: 400px; flex-shrink: 0;
-      background: var(--card);
-      border: 1px solid rgba(58,229,90,0.15);
-      border-radius: 36px; overflow: hidden;
-      position: relative;
+      background: var(--card); border: 1px solid rgba(255,90,60,0.18);
+      border-radius: 36px; overflow: hidden; position: relative;
       box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
     .phone-notch {
       position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-      width: 60px; height: 5px; background: #1A1D20; border-radius: 3px; z-index: 2;
+      width: 60px; height: 5px; background: #0F0E0C; border-radius: 3px; z-index: 2;
     }
     .phone-screen { width: 100%; height: 100%; padding: 24px 12px 14px; display: flex; flex-direction: column; gap: 8px; }
     .screen-scanner { background: #000; }
     .scanner-viewfinder {
       flex: 1; position: relative;
-      background: linear-gradient(135deg, #0a0c0e, #080A0C);
+      background: linear-gradient(135deg, #0a0a08, #0F0E0C);
       border-radius: 16px; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
     }
-    .scanner-corner { position: absolute; width: 24px; height: 24px; border-color: var(--green); border-style: solid; border-width: 0; }
+    .scanner-corner { position: absolute; width: 24px; height: 24px; border-color: var(--brand); border-style: solid; border-width: 0; }
     .scanner-corner.tl { top: 14px; left: 14px; border-top-width: 2px; border-left-width: 2px; border-radius: 4px 0 0 0; }
     .scanner-corner.tr { top: 14px; right: 14px; border-top-width: 2px; border-right-width: 2px; border-radius: 0 4px 0 0; }
     .scanner-corner.bl { bottom: 14px; left: 14px; border-bottom-width: 2px; border-left-width: 2px; border-radius: 0 0 0 4px; }
     .scanner-corner.br { bottom: 14px; right: 14px; border-bottom-width: 2px; border-right-width: 2px; border-radius: 0 0 4px 0; }
     .scanner-line {
       position: absolute; top: 14px; left: 14px; right: 14px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      background: linear-gradient(90deg, transparent, var(--brand), transparent);
       animation: scan-line 2.4s ease-in-out infinite;
     }
-    @keyframes scan-line {
-      0%,100% { top: 14px; }
-      50%      { top: calc(100% - 14px); }
-    }
-    .scanner-label { font-size: 8px; font-weight: 700; color: var(--green); letter-spacing: 2px; text-align: center; }
+    @keyframes scan-line { 0%,100% { top: 14px; } 50% { top: calc(100% - 14px); } }
+    .scanner-label { font-size: 8px; font-weight: 700; color: var(--brand); letter-spacing: 2px; text-align: center; }
 
     .screen-results { background: var(--bg); }
-    .screen-header { font-size: 7px; font-weight: 700; color: var(--gray1); letter-spacing: 2px; text-align: center; padding-top: 4px; }
-    .product-mini-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 10px; }
-    .product-mini-brand { font-size: 6px; font-weight: 700; color: var(--green); letter-spacing: 1.5px; }
-    .product-mini-name { font-size: 9px; font-weight: 800; color: var(--white); line-height: 1.3; }
-    .body-impact-label { font-size: 7px; font-weight: 800; color: var(--white); letter-spacing: 2px; }
+    .screen-header { font-size: 7px; font-weight: 700; color: var(--ink-soft); letter-spacing: 2px; text-align: center; padding-top: 4px; }
+    .product-mini-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
+    .product-mini-brand { font-size: 6px; font-weight: 700; color: var(--brand); letter-spacing: 1.5px; }
+    .product-mini-name { font-size: 9px; font-weight: 800; color: var(--ink); line-height: 1.3; }
+    .body-impact-label { font-size: 7px; font-weight: 800; color: var(--ink); letter-spacing: 2px; }
     .metrics-row { display: flex; gap: 5px; }
     .metric-card-mini {
-      flex: 1; background: var(--card); border: 1px solid var(--border);
+      flex: 1; background: var(--card); border: 1px solid var(--line);
       border-radius: 10px; padding: 7px 5px; text-align: center;
       display: flex; flex-direction: column; gap: 4px;
     }
-    .metric-card-mini.top-bar { border-top: 1.5px solid var(--green); }
-    .metric-card-mini .m-label { font-size: 5.5px; font-weight: 700; color: var(--gray1); letter-spacing: 1px; }
-    .metric-card-mini .m-bar-track { height: 2px; background: var(--gray2); border-radius: 1px; overflow: hidden; }
+    .metric-card-mini.top-bar { border-top: 1.5px solid var(--good); }
+    .metric-card-mini .m-label { font-size: 5.5px; font-weight: 700; color: var(--ink-soft); letter-spacing: 1px; }
+    .metric-card-mini .m-bar-track { height: 2px; background: var(--line); border-radius: 1px; overflow: hidden; }
     .metric-card-mini .m-bar-fill { height: 2px; border-radius: 1px; }
     .metric-card-mini .m-score { font-size: 16px; font-weight: 800; line-height: 1; }
 
     .screen-flags { background: var(--bg); }
-    .flag-group-mini { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 8px; }
-    .flag-group-mini-label { font-size: 6px; font-weight: 700; color: var(--red); letter-spacing: 1.5px; margin-bottom: 6px; }
+    .flag-group-mini { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px; }
+    .flag-group-mini-label { font-size: 6px; font-weight: 700; color: var(--bad); letter-spacing: 1.5px; margin-bottom: 6px; }
     .flag-chip-mini {
       display: inline-block;
-      background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.3);
+      background: rgba(255,107,90,0.12); border: 1px solid rgba(255,107,90,0.3);
       border-radius: 5px; padding: 3px 6px;
-      font-size: 7px; font-weight: 600; color: var(--red); margin: 2px 2px 0 0;
+      font-size: 7px; font-weight: 600; color: var(--bad); margin: 2px 2px 0 0;
     }
-    .verdict-card-mini { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 8px; display: flex; gap: 7px; }
-    .verdict-bar-mini { width: 2px; border-radius: 1px; background: var(--green); flex-shrink: 0; }
-    .verdict-text-mini { font-size: 7px; color: #C0C0C8; line-height: 1.5; }
+    .verdict-card-mini { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px; display: flex; gap: 7px; }
+    .verdict-bar-mini { width: 2px; border-radius: 1px; background: var(--brand); flex-shrink: 0; }
+    .verdict-text-mini { font-size: 7px; color: var(--ink-soft); line-height: 1.5; }
 
-    .screen-alts { background: var(--bg); }
-    .alt-card-mini { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 8px; }
-    .alt-card-mini .ab { font-size: 5.5px; font-weight: 700; color: var(--green); letter-spacing: 1px; }
-    .alt-card-mini .an { font-size: 8px; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 5px; }
-    .alt-scores-mini { display: flex; gap: 4px; }
-    .alt-score-chip-mini { background: var(--gray2); border-radius: 5px; padding: 3px 5px; font-size: 7px; font-weight: 800; }
+    .screen-sage { background: var(--bg); }
+    .sage-header-mini { font-size: 7px; font-weight: 800; color: var(--ink-soft); letter-spacing: 2px; text-align: center; }
+    .sage-face-mini {
+      width: 60px; height: 60px; border-radius: 50%;
+      margin: 8px auto;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 900;
+    }
+    .sage-mood-mini { font-size: 8px; font-weight: 800; text-align: center; letter-spacing: 1px; }
+    .sage-moods-grid { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+    .sage-mood-dot-mini {
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      font-size: 5.5px; font-weight: 700; color: var(--ink-soft); letter-spacing: 0.5px;
+    }
+    .sage-mood-dot-mini .dot { width: 16px; height: 16px; border-radius: 50%; }
 
     .screen-sub { background: var(--bg); }
     .premium-badge-mini {
       align-self: flex-start;
-      background: rgba(200,168,75,0.15); border: 1px solid rgba(200,168,75,0.4);
+      background: rgba(245,185,71,0.15); border: 1px solid rgba(245,185,71,0.4);
       border-radius: 10px; padding: 3px 8px;
-      font-size: 6px; font-weight: 800; color: var(--gold); letter-spacing: 1.5px;
+      font-size: 6px; font-weight: 800; color: var(--warn); letter-spacing: 1.5px;
     }
-    .sub-hero-title { font-size: 11px; font-weight: 900; color: var(--white); line-height: 1.3; }
-    .perk-row-mini { display: flex; align-items: center; gap: 7px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+    .sub-hero-title { font-size: 11px; font-weight: 900; color: var(--ink); line-height: 1.3; }
+    .perk-row-mini { display: flex; align-items: center; gap: 7px; padding: 5px 0; border-bottom: 1px solid var(--line); }
     .perk-icon-mini {
-      width: 22px; height: 22px; border-radius: 6px; background: rgba(255,255,255,0.05);
+      width: 22px; height: 22px; border-radius: 6px; background: var(--brand-soft);
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      color: var(--green);
+      color: var(--brand);
     }
     .perk-icon-mini svg { width: 11px; height: 11px; }
-    .perk-title-mini { font-size: 7px; font-weight: 700; color: var(--white); }
-    .perk-sub-mini { font-size: 5.5px; color: var(--gray1); }
-    .perk-check-mini { font-size: 8px; color: var(--green); font-weight: 700; margin-left: auto; }
+    .perk-title-mini { font-size: 7px; font-weight: 700; color: var(--ink); }
+    .perk-sub-mini { font-size: 5.5px; color: var(--ink-soft); }
+    .perk-check-mini { font-size: 8px; color: var(--good); font-weight: 700; margin-left: auto; }
 
-    /* ── SECTION SHARED ── */
-    .section-eyebrow { font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 3px; margin-bottom: 16px; }
-    .section-title { font-size: clamp(28px, 4vw, 46px); font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
-    .section-subtitle { font-size: 16px; color: var(--gray1); line-height: 1.7; }
-
-    /* ── DOWNLOAD ── */
-    .download-section {
-      text-align: center; padding: 80px 24px;
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .download-section h2 { font-size: 28px; font-weight: 800; margin-bottom: 24px; }
-    .download-badge-row { display: flex; justify-content: center; }
-
-    /* ── FEATURES ── */
-    .features-section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
-    .features-title { font-size: clamp(30px, 5vw, 52px); font-weight: 900; line-height: 1.1; letter-spacing: -1.5px; max-width: 580px; margin-bottom: 16px; }
-    .features-subtitle { font-size: 16px; color: var(--gray1); max-width: 520px; line-height: 1.7; margin-bottom: 56px; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-    .feature-card {
-      background: var(--card); border: 1px solid var(--border-subtle);
-      border-radius: 20px; padding: 24px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .feature-card:hover { border-color: rgba(58,229,90,0.2); transform: translateY(-3px); }
-    .feature-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: rgba(58,229,90,0.08); border: 1px solid rgba(58,229,90,0.18);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--green); margin-bottom: 16px;
-    }
-    .feature-title { font-size: 15px; font-weight: 700; margin-bottom: 7px; }
-    .feature-desc { font-size: 13px; color: var(--gray1); line-height: 1.6; }
-
-    /* ── HOW ── */
-    .how-section { padding: 100px 24px; background: var(--card); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+    /* ── HOW IT WORKS ── */
+    .how-section { padding: 100px 24px; background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .how-inner { max-width: 900px; margin: 0 auto; text-align: center; }
     .how-title { font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -1px; margin-bottom: 60px; }
     .steps { display: flex; gap: 0; justify-content: center; flex-wrap: wrap; }
     .step { flex: 1; min-width: 200px; max-width: 260px; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; position: relative; }
     .step:not(:last-child)::after {
       content: '→'; position: absolute; right: -10px; top: 22px;
-      font-size: 18px; color: rgba(58,229,90,0.3);
+      font-size: 18px; color: rgba(255,90,60,0.3);
     }
     .step-num {
       width: 48px; height: 48px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--green), var(--yellow));
-      color: #080A0C; font-size: 16px; font-weight: 900;
+      background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+      color: #fff; font-size: 16px; font-weight: 900;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 16px; flex-shrink: 0;
     }
-    .step-title { font-size: 15px; font-weight: 800; margin-bottom: 8px; }
-    .step-desc { font-size: 13px; color: var(--gray1); line-height: 1.6; }
+    .step-title { font-size: 15px; font-weight: 800; margin-bottom: 8px; color: var(--ink); }
+    .step-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+    @media (max-width: 768px) { .step:not(:last-child)::after { display: none; } }
 
-    /* ── SCORES ── */
+    /* ── THREE SCORES ── */
     .scores-section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
     .scores-layout { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
     .scores-text { flex: 1; min-width: 260px; }
-    .scores-desc { font-size: 15px; color: var(--gray1); line-height: 1.7; margin-bottom: 36px; }
+    .scores-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 36px; }
     .score-rows { display: flex; flex-direction: column; gap: 12px; }
     .score-row-item {
       display: flex; align-items: center; gap: 14px;
-      background: var(--card); border: 1px solid var(--border-subtle);
-      border-radius: 14px; padding: 14px 16px;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 14px 16px;
+      transition: border-color 0.2s;
     }
+    .score-row-item:hover { border-color: var(--brand); }
     .score-row-badge {
       width: 48px; height: 48px; border-radius: 14px;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .score-row-badge span { font-size: 24px; font-weight: 900; line-height: 1; }
     .score-row-label { font-size: 14px; font-weight: 800; margin-bottom: 3px; }
-    .score-row-desc { font-size: 12px; color: var(--gray1); line-height: 1.5; }
+    .score-row-desc { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
 
     .scores-visual { flex: 0 0 280px; }
     .big-phone {
       width: 280px; height: 520px;
-      background: var(--card); border: 1px solid rgba(58,229,90,0.2);
+      background: var(--card); border: 1px solid rgba(255,90,60,0.2);
       border-radius: 48px; overflow: hidden; position: relative;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 80px rgba(58,229,90,0.08);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 80px rgba(255,90,60,0.08);
       margin: 0 auto;
     }
     .big-phone-notch {
       position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
-      width: 80px; height: 6px; background: #1A1D20; border-radius: 3px; z-index: 2;
+      width: 80px; height: 6px; background: #0F0E0C; border-radius: 3px; z-index: 2;
     }
     .big-phone-screen { width: 100%; height: 100%; padding: 36px 18px 20px; display: flex; flex-direction: column; gap: 10px; }
     .bps-nav { display: flex; justify-content: space-between; align-items: center; }
-    .bps-nav-title { font-size: 9px; font-weight: 700; color: var(--gray1); letter-spacing: 2px; }
-    .bps-nav-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--gray2); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--white); }
-    .bps-product { background: rgba(58,229,90,0.04); border: 1px solid rgba(58,229,90,0.15); border-radius: 14px; padding: 12px; box-shadow: 0 0 20px rgba(58,229,90,0.07); }
-    .bps-brand { font-size: 7px; font-weight: 700; color: var(--green); letter-spacing: 1.5px; }
-    .bps-name { font-size: 12px; font-weight: 800; color: var(--white); line-height: 1.3; }
+    .bps-nav-title { font-size: 9px; font-weight: 700; color: var(--ink-soft); letter-spacing: 2px; }
+    .bps-nav-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--card-2); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--ink); }
+    .bps-product { background: var(--brand-soft); border: 1px solid rgba(255,90,60,0.2); border-radius: 14px; padding: 12px; }
+    .bps-brand { font-size: 7px; font-weight: 700; color: var(--brand); letter-spacing: 1.5px; }
+    .bps-name { font-size: 12px; font-weight: 800; color: var(--ink); line-height: 1.3; }
     .bps-chips { display: flex; gap: 5px; margin-top: 6px; }
-    .bps-chip { background: var(--gray2); border-radius: 6px; padding: 3px 7px; font-size: 7px; color: var(--gray1); font-weight: 600; }
-    .bps-section-label { font-size: 9px; font-weight: 800; color: var(--white); letter-spacing: 2px; }
+    .bps-chip { background: var(--card-2); border-radius: 6px; padding: 3px 7px; font-size: 7px; color: var(--ink-soft); font-weight: 600; }
+    .bps-section-label { font-size: 9px; font-weight: 800; color: var(--ink); letter-spacing: 2px; }
     .bps-metrics { display: flex; gap: 7px; }
-    .bps-metric { flex: 1; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 10px 7px; overflow: hidden; position: relative; }
+    .bps-metric { flex: 1; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px 7px; overflow: hidden; position: relative; }
     .bps-metric-top { position: absolute; top: 0; left: 0; right: 0; height: 2px; }
-    .bps-metric-label { font-size: 6.5px; font-weight: 700; color: var(--gray1); letter-spacing: 1px; margin-bottom: 10px; }
-    .bps-metric-track { height: 2px; background: var(--gray2); border-radius: 1px; overflow: hidden; margin-bottom: 8px; }
+    .bps-metric-label { font-size: 6.5px; font-weight: 700; color: var(--ink-soft); letter-spacing: 1px; margin-bottom: 10px; }
+    .bps-metric-track { height: 2px; background: var(--line); border-radius: 1px; overflow: hidden; margin-bottom: 8px; }
     .bps-metric-fill { height: 2px; border-radius: 1px; }
     .bps-metric-score { font-size: 22px; font-weight: 800; line-height: 1; }
-    .bps-metric-max { font-size: 9px; color: var(--gray1); }
-    .bps-verdict { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 10px; display: flex; gap: 8px; }
-    .bps-verdict-bar { width: 2px; border-radius: 1px; background: var(--green); flex-shrink: 0; }
-    .bps-verdict-text { font-size: 8px; color: #C0C0C8; line-height: 1.5; }
+    .bps-metric-max { font-size: 9px; color: var(--ink-soft); }
+    .bps-verdict { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px; display: flex; gap: 8px; }
+    .bps-verdict-bar { width: 2px; border-radius: 1px; background: var(--brand); flex-shrink: 0; }
+    .bps-verdict-text { font-size: 8px; color: var(--ink-soft); line-height: 1.5; }
+    @media (max-width: 768px) { .scores-layout { flex-direction: column; } .scores-visual { order: -1; } }
+
+    /* ── SAGE ── */
+    .sage-section { padding: 100px 24px; border-top: 1px solid var(--line); }
+    .sage-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+    .sage-text { flex: 1; min-width: 260px; }
+    .sage-body { font-size: 15px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 8px; }
+    .sage-visual { flex: 0 0 380px; display: flex; align-items: center; justify-content: center; }
+    .sage-video { width: 340px; height: 340px; border-radius: 50%; object-fit: cover; }
+    @media (max-width: 768px) { .sage-inner { flex-direction: column; } .sage-visual { flex: auto; width: 100%; } }
 
     /* ── METHODOLOGY ── */
     .method-section { padding: 100px 24px; max-width: 900px; margin: 0 auto; }
     .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 40px; }
     .method-card {
-      background: var(--card); border: 1px solid var(--border-subtle);
+      background: var(--card); border: 1px solid var(--line);
       border-radius: 16px; padding: 22px;
+      transition: border-color 0.2s;
     }
-    .method-num { font-size: 11px; font-weight: 800; color: var(--green); letter-spacing: 2px; margin-bottom: 10px; }
-    .method-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-    .method-card p { font-size: 13px; color: var(--gray1); line-height: 1.6; margin-bottom: 12px; }
-    .method-card a { font-size: 12px; color: var(--green); text-decoration: none; font-weight: 600; }
-    .method-card a:hover { text-decoration: underline; }
+    .method-card:hover { border-color: var(--brand); }
+    .method-num { font-size: 11px; font-weight: 800; color: var(--brand); letter-spacing: 2px; margin-bottom: 10px; }
+    .method-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+    .method-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
 
     /* ── COMPARISON ── */
     .compare-section { padding: 100px 24px; max-width: 900px; margin: 0 auto; }
     .compare-table {
       width: 100%; border-collapse: separate; border-spacing: 0;
-      background: var(--card); border: 1px solid var(--border-subtle); border-radius: 18px; overflow: hidden;
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
       margin-top: 40px;
     }
     .compare-table th, .compare-table td {
-      padding: 16px 14px; text-align: left;
-      font-size: 13px;
-      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 14px; text-align: left; font-size: 13px;
+      border-bottom: 1px solid var(--line);
     }
-    .compare-table th { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; color: var(--gray1); text-transform: uppercase; background: rgba(255,255,255,0.02); }
-    .compare-table th.us, .compare-table td.us { background: rgba(58,229,90,0.06); color: var(--white); }
-    .compare-table th.us { color: var(--green); }
+    .compare-table th { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; color: var(--ink-soft); text-transform: uppercase; background: rgba(255,255,255,0.02); }
+    .compare-table th.us { background: rgba(255,90,60,0.08); color: var(--brand); }
+    .compare-table td.us { background: rgba(255,90,60,0.05); color: var(--ink); }
     .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table td.feature { color: var(--white); font-weight: 600; }
-    .compare-yes { color: var(--green); font-weight: 800; }
-    .compare-no  { color: var(--red); font-weight: 800; }
-    .compare-table td.dim { color: var(--gray1); }
-
-    /* ── FAQ ── */
-    .faq-section { padding: 100px 24px; max-width: 800px; margin: 0 auto; }
-    .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 40px; }
-    details.faq-item {
-      background: var(--card); border: 1px solid var(--border-subtle);
-      border-radius: 14px; padding: 0; overflow: hidden;
-      transition: border-color 0.2s;
-    }
-    details.faq-item[open] { border-color: rgba(58,229,90,0.2); }
-    details.faq-item summary {
-      cursor: pointer; padding: 18px 22px;
-      font-size: 15px; font-weight: 700; list-style: none;
-      display: flex; justify-content: space-between; align-items: center; gap: 14px;
-    }
-    details.faq-item summary::-webkit-details-marker { display: none; }
-    details.faq-item summary::after {
-      content: '+'; font-size: 22px; font-weight: 400; color: var(--gray1);
-      transition: transform 0.2s;
-    }
-    details.faq-item[open] summary::after { content: '−'; }
-    details.faq-item .faq-body { padding: 0 22px 18px; font-size: 14px; color: var(--gray1); line-height: 1.6; }
-
-    /* ── FOUNDER ── */
-    .founder-section { padding: 100px 24px; max-width: 760px; margin: 0 auto; }
-    .founder-card {
-      background: var(--card); border: 1px solid var(--border-subtle);
-      border-radius: 20px; padding: 32px;
-      display: flex; gap: 24px; align-items: flex-start;
-    }
-    .founder-avatar {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--green), var(--yellow));
-      flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 26px; font-weight: 900; color: #080A0C;
-    }
-    .founder-text p { font-size: 15px; color: var(--gray1); line-height: 1.7; margin-bottom: 14px; }
-    .founder-text .sig { font-size: 13px; color: var(--white); font-weight: 700; }
-    .founder-text .role { font-size: 12px; color: var(--gray1); }
-    @media (max-width: 560px) {
-      .founder-card { flex-direction: column; align-items: center; text-align: center; }
-    }
+    .compare-table td.feature { color: var(--ink); font-weight: 600; }
+    .compare-yes { color: var(--good); font-weight: 800; }
+    .compare-no  { color: var(--bad); font-weight: 800; }
+    .compare-table td.dim { color: var(--ink-soft); }
 
     /* ── PRICING ── */
     .pricing-section { padding: 100px 24px; text-align: center; }
     .pricing-inner { max-width: 720px; margin: 0 auto; }
-    .pricing-eyebrow { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 3px; margin-bottom: 16px; }
+    .pricing-eyebrow { font-size: 10px; font-weight: 800; color: var(--warn); letter-spacing: 3px; margin-bottom: 16px; }
     .pricing-title { font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -1px; margin-bottom: 14px; }
-    .pricing-subtitle { font-size: 15px; color: var(--gray1); line-height: 1.7; margin-bottom: 48px; }
-    .pricing-cards { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .pricing-subtitle { font-size: 15px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 48px; }
+    .pricing-cards { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
     .pricing-card {
-      background: var(--card); border: 1.5px solid rgba(255,255,255,0.08);
+      background: var(--card); border: 1.5px solid var(--line);
       border-radius: 18px; padding: 24px; width: 240px;
       text-align: left; position: relative; overflow: hidden;
       display: flex; flex-direction: column; gap: 6px;
       transition: border-color 0.2s;
     }
     .pricing-card.featured {
-      border-color: var(--gold);
-      box-shadow: 0 0 40px rgba(200,168,75,0.1);
+      border-color: var(--warn);
+      box-shadow: 0 0 40px rgba(245,185,71,0.12);
     }
     .pricing-card-glow {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(200,168,75,0.1), rgba(200,168,75,0.02));
+      background: linear-gradient(135deg, rgba(245,185,71,0.08), rgba(245,185,71,0.02));
       pointer-events: none;
     }
     .save-badge {
-      display: inline-block; background: rgba(200,168,75,0.2);
-      border-radius: 6px; padding: 2px 7px;
-      font-size: 8px; font-weight: 800; color: var(--gold); letter-spacing: 1px;
+      display: inline-block; background: rgba(245,185,71,0.2);
+      border-radius: 100px; padding: 2px 9px;
+      font-size: 8px; font-weight: 800; color: var(--warn); letter-spacing: 1px;
       margin-bottom: 6px; align-self: flex-start;
     }
-    .pricing-plan-name { font-size: 14px; font-weight: 700; }
-    .pricing-plan-billing { font-size: 11px; color: var(--gray1); margin-bottom: 8px; }
-    .pricing-price { font-size: 28px; font-weight: 900; letter-spacing: -1px; }
-    .pricing-per { font-size: 12px; color: var(--gray1); }
-    .pricing-permonth { font-size: 10px; color: var(--gray1); margin-top: 2px; }
+    .pricing-plan-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .pricing-plan-billing { font-size: 11px; color: var(--ink-soft); margin-bottom: 8px; }
+    .pricing-price { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--ink); display: inline; }
+    .pricing-per { font-size: 12px; color: var(--ink-soft); }
+    .pricing-permonth { font-size: 10px; color: var(--ink-soft); margin-top: 2px; }
     .pricing-card-cta {
       margin-top: 14px; display: inline-block; text-align: center;
-      background: rgba(255,255,255,0.06); color: var(--white);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06); color: var(--ink);
+      border: 1px solid var(--line);
       font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
       padding: 11px 14px; border-radius: 10px; text-decoration: none;
       transition: background 0.2s;
     }
     .pricing-card-cta:hover { background: rgba(255,255,255,0.1); }
     .pricing-card.featured .pricing-card-cta {
-      background: linear-gradient(90deg, var(--gold), #E8C96B);
+      background: linear-gradient(90deg, var(--warn), #E8C157);
       color: #1A1000; border-color: transparent;
     }
-    .pricing-legal { font-size: 11px; color: rgba(154,154,159,0.7); line-height: 1.6; }
-    .pricing-trust { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
-    .pricing-trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray1); }
-    .pricing-trust-check { font-size: 10px; color: var(--green); }
+    .perks-list-pricing { display: flex; flex-direction: column; gap: 0; max-width: 520px; margin: 40px auto 0; text-align: left; }
+    .perk-row-pricing {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 0; border-bottom: 1px solid var(--line);
+    }
+    .perk-emoji { font-size: 18px; flex-shrink: 0; width: 28px; text-align: center; }
+    .perk-text-pricing { flex: 1; }
+    .perk-title-pricing { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .perk-desc-pricing { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
+    .pricing-trust { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 24px; font-size: 13px; color: var(--ink-soft); align-items: center; }
+    .pricing-trust-check { color: var(--good); font-weight: 700; }
+    .pricing-free-note { margin-top: 14px; font-size: 12px; color: var(--ink-faint); }
+    @media (max-width: 480px) { .pricing-cards { flex-direction: column; align-items: center; } }
 
-    /* ── PERKS ── */
-    .perks-section { padding: 0 24px 100px; max-width: 680px; margin: 0 auto; }
-    .perks-label { font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 3px; margin-bottom: 16px; text-align: center; }
-    .perks-list { display: flex; flex-direction: column; gap: 0; }
-    .perk-row {
-      display: flex; align-items: center; gap: 16px; padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+    /* ── FOUNDER ── */
+    .founder-section { padding: 100px 24px; max-width: 760px; margin: 0 auto; }
+    .founder-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 20px; padding: 32px;
+      display: flex; gap: 24px; align-items: flex-start;
     }
-    .perk-icon-wrap {
-      width: 40px; height: 40px; border-radius: 12px;
-      background: rgba(58,229,90,0.08); border: 1px solid rgba(58,229,90,0.18);
-      color: var(--green);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    .founder-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 900; color: #fff;
     }
-    .perk-text { flex: 1; }
-    .perk-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
-    .perk-desc { font-size: 12px; color: var(--gray1); line-height: 1.5; }
-    .perk-check { font-size: 13px; color: var(--green); font-weight: 700; }
+    .founder-text p { font-size: 15px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 14px; }
+    .founder-text .sig { font-size: 13px; color: var(--ink); font-weight: 700; }
+    .founder-text .role { font-size: 12px; color: var(--ink-soft); }
+    @media (max-width: 560px) { .founder-card { flex-direction: column; align-items: center; text-align: center; } }
+
+    /* ── FAQ ── */
+    .faq-section { padding: 100px 24px; max-width: 800px; margin: 0 auto; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 40px; }
+    details.faq-item {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 14px; padding: 0; overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    details.faq-item[open] { border-color: rgba(255,90,60,0.3); }
+    details.faq-item summary {
+      cursor: pointer; padding: 18px 22px;
+      font-size: 15px; font-weight: 700; color: var(--ink); list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 14px;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: '+'; font-size: 22px; font-weight: 400; color: var(--ink-soft);
+      transition: transform 0.2s; flex-shrink: 0;
+    }
+    details.faq-item[open] summary::after { content: '−'; }
+    details.faq-item .faq-body { padding: 0 22px 18px; font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
 
     /* ── FOOTER ── */
-    footer { background: var(--card); border-top: 1px solid var(--border-subtle); padding: 56px 24px 32px; }
+    footer { background: var(--card); border-top: 1px solid var(--line); padding: 56px 24px 32px; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
-    .footer-col h4 { font-size: 11px; font-weight: 800; color: var(--white); letter-spacing: 1.5px; margin-bottom: 14px; text-transform: uppercase; }
-    .footer-col a, .footer-col p { display: block; font-size: 13px; color: var(--gray1); text-decoration: none; line-height: 2; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--white); }
+    .footer-col h4 { font-size: 11px; font-weight: 800; color: var(--ink); letter-spacing: 1.5px; margin-bottom: 14px; text-transform: uppercase; }
+    .footer-col a, .footer-col p { display: block; font-size: 13px; color: var(--ink-soft); text-decoration: none; line-height: 2; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--ink); }
     .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; text-decoration: none; }
     .footer-brand-box { width: 30px; height: 30px; border-radius: 8px; overflow: hidden; }
     .footer-brand-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .footer-brand-name { font-size: 14px; font-weight: 800; color: var(--white); }
-    .footer-tagline { font-size: 13px; color: var(--gray1); line-height: 1.6; }
-    .footer-bottom { max-width: 1100px; margin: 32px auto 0; padding-top: 24px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--gray1); }
-    @media (max-width: 720px) {
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-    }
+    .footer-brand-name { font-size: 16px; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; }
+    .footer-tagline { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+    .footer-bottom { max-width: 1100px; margin: 32px auto 0; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--ink-faint); }
+    @media (max-width: 720px) { .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; } }
 
-    /* ── RESPONSIVE ── */
+    /* ── MISC RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav { padding: 14px 20px; }
       .hero { padding: 100px 20px 60px; }
-      .scores-layout { flex-direction: column; }
-      .scores-visual { order: -1; }
-      .step:not(:last-child)::after { display: none; }
-      .features-section, .scores-section, .pricing-section, .method-section, .compare-section, .faq-section, .founder-section { padding: 60px 20px; }
+      .scores-section, .method-section, .compare-section, .faq-section, .founder-section, .sage-section { padding: 60px 20px; }
       .compare-table th, .compare-table td { padding: 12px 8px; font-size: 12px; }
-    }
-    @media (max-width: 480px) {
-      .pricing-cards { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -571,31 +549,31 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">
-      <div class="nav-logo-box"><img src="logo.jpg" alt="FoodScanner logo" /></div>
-      <span class="nav-logo-text">FoodScanner</span>
+      <div class="nav-logo-box"><img src="logo.jpg" alt="glowscore logo" /></div>
+      <span class="nav-logo-text">glowscore</span>
     </a>
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
-      <a href="#method">Methodology</a>
-      <a href="#faq">FAQ</a>
+      <a href="#sage">Sage</a>
       <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
     </div>
-    <a class="nav-cta" href="#download">DOWNLOAD APP</a>
+    <a class="nav-cta" href="#">DOWNLOAD</a>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero-glow"></div>
     <div class="hero-eyebrow">
       <span class="stars">★★★★★</span>
-      <span>Built on 200+ peer-reviewed nutrition studies</span>
+      <span>Built for the glow-up</span>
     </div>
-    <h1 class="hero-title">Know exactly what you're <span>eating.</span></h1>
-    <p class="hero-subtitle">Scan any food barcode. Get leanness, skin, and bloat scores grounded in published nutrition research — not vibes.</p>
+    <h1 class="hero-title">Scan any food.<br><span class="accent">See how it hits your face.</span></h1>
+    <p class="hero-subtitle">Point your camera at a barcode — get three scores in under three seconds: skin clarity, bloat, and leanness. No macros, no calorie obsession. Just the answer.</p>
     <div class="hero-cta-row">
-      <a class="btn-primary" href="#download">START SCANNING NOW</a>
-      <a class="appstore-badge" href="#download">
+      <a class="btn-primary" href="#">DOWNLOAD FREE</a>
+      <a class="appstore-badge" href="#">
         <svg viewBox="0 0 814 1000" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105-37.3-150.3-93c-52.2-63.2-96-162.8-96-257.4C0 388.5 41.3 237 138.5 166.8c47.3-33.7 107.5-55.2 171.5-55.2 63.7 0 107.8 38.2 168.2 38.2 60.7 0 113.4-40.8 181.7-40.8 25.9 0 106.3 2.5 160.4 74.5zm-87.1-174.7c28.4-35.1 48.5-83.8 48.5-132.6 0-6.5-.6-13-1.9-18.2-46.3 1.9-101 32-134.7 72.5-27.8 33.7-51.6 82.4-51.6 132.6 0 7.1 1.3 14.2 1.9 16.4 3.2.6 8.5 1.3 13.8 1.3 41.4 0 93.5-28.4 124-71.9z"/>
         </svg>
@@ -606,14 +584,13 @@
       </a>
     </div>
     <div class="hero-trust">
-      <div class="hero-trust-item"><div class="hero-trust-dot"></div>No ads, ever</div>
-      <div class="hero-trust-item"><div class="hero-trust-dot"></div>Cancel anytime</div>
-      <div class="hero-trust-item"><div class="hero-trust-dot"></div>Data never sold</div>
-      <div class="hero-trust-item"><div class="hero-trust-dot"></div>7-day free trial</div>
+      No ads, ever <span class="hero-trust-dot">·</span>
+      Cancel anytime <span class="hero-trust-dot">·</span>
+      Data never sold <span class="hero-trust-dot">·</span>
+      iOS only
     </div>
   </section>
 
-  <!-- SAMPLE SCANS -->
   <!-- SCREENSHOTS CAROUSEL -->
   <section class="screenshots-section">
     <p class="screenshots-label">INSIDE THE APP</p>
@@ -635,14 +612,14 @@
           </div>
         </div>
 
-        <!-- Phone 2: Body Impact -->
+        <!-- Phone 2: Results -->
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen screen-results">
             <div class="screen-header">ANALYSIS</div>
             <div class="product-mini-card">
               <div class="product-mini-brand">KIND</div>
-              <div class="product-mini-name">Dark Chocolate Nuts &amp; Sea Salt Bar</div>
+              <div class="product-mini-name">Dark Choc Nuts &amp; Sea Salt Bar</div>
             </div>
             <div class="body-impact-label">BODY IMPACT</div>
             <div class="metrics-row">
@@ -653,8 +630,8 @@
               </div>
               <div class="metric-card-mini">
                 <div class="m-label">SKIN</div>
-                <div class="m-bar-track"><div class="m-bar-fill" style="width:65%;background:#4ADE80"></div></div>
-                <div class="m-score" style="color:#4ADE80">65</div>
+                <div class="m-bar-track"><div class="m-bar-fill" style="width:65%;background:#F5B947"></div></div>
+                <div class="m-score" style="color:#F5B947">65</div>
               </div>
               <div class="metric-card-mini">
                 <div class="m-label">BLOAT</div>
@@ -683,53 +660,54 @@
             </div>
             <div class="verdict-card-mini" style="margin-top:8px">
               <div class="verdict-bar-mini"></div>
-              <div class="verdict-text-mini">Linoleic-acid-heavy seed oils correlate with higher inflammatory markers in trials. Bloat score docked 22 points.</div>
+              <div class="verdict-text-mini">Sunflower oil contributes ~14g linoleic acid per serving. Skin score docked 22 points.</div>
             </div>
           </div>
         </div>
 
-        <!-- Phone 4: Share -->
+        <!-- Phone 4: Sage -->
         <div class="phone">
           <div class="phone-notch"></div>
-          <div class="phone-screen screen-alts">
-            <div class="screen-header">SHARE WITH FRIENDS</div>
-            <div class="alt-card-mini" style="text-align:center;padding:14px 12px;">
-              <div class="ab" style="margin-bottom:6px;">KIND BAR · L 78 · S 65 · B 72</div>
-              <div class="an" style="font-size:10px;line-height:1.4;">Send this scan to your group chat — let them see what you're eating before you commit.</div>
-            </div>
-            <div class="alt-card-mini" style="margin-top:6px;display:flex;gap:6px;justify-content:center;">
-              <div style="flex:1;text-align:center;font-size:9px;font-weight:700;letter-spacing:0.5px;color:#4ADE80;padding:8px 4px;border:1px solid rgba(74,222,128,0.3);border-radius:8px;">iMESSAGE</div>
-              <div style="flex:1;text-align:center;font-size:9px;font-weight:700;letter-spacing:0.5px;color:#4ADE80;padding:8px 4px;border:1px solid rgba(74,222,128,0.3);border-radius:8px;">COPY LINK</div>
-              <div style="flex:1;text-align:center;font-size:9px;font-weight:700;letter-spacing:0.5px;color:#4ADE80;padding:8px 4px;border:1px solid rgba(74,222,128,0.3);border-radius:8px;">MORE</div>
+          <div class="phone-screen screen-sage">
+            <div class="sage-header-mini">SAGE</div>
+            <div class="sage-face-mini" style="background:linear-gradient(135deg,#4ADE80,#22c55e)">😊</div>
+            <div class="sage-mood-mini" style="color:#4ADE80">THRIVING</div>
+            <div class="sage-moods-grid" style="margin-top:10px">
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#4ADE80"></div>Thriving</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#FF8C42"></div>At peace</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#9A938A"></div>Waiting</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#A78BFA"></div>Gut-stressed</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#60A5FA"></div>Inflamed</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#FFC857"></div>Ascended</div>
             </div>
           </div>
         </div>
 
-        <!-- Phone 5: Subscription -->
+        <!-- Phone 5: Premium -->
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen screen-sub">
             <div class="premium-badge-mini">★ PREMIUM</div>
-            <div class="sub-hero-title">Know exactly what you're eating.</div>
+            <div class="sub-hero-title">Scan any food. See exactly what it does.</div>
             <div class="perk-row-mini">
               <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-              <div><div class="perk-title-mini">Unlimited Scans</div><div class="perk-sub-mini">No daily cap</div></div>
+              <div><div class="perk-title-mini">Unlimited Scans</div><div class="perk-sub-mini">Free: 3/day</div></div>
               <div class="perk-check-mini">✓</div>
             </div>
             <div class="perk-row-mini">
-              <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h2M19 12h2M12 3v2M12 19v2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></svg></div>
-              <div><div class="perk-title-mini">Deep Analysis</div><div class="perk-sub-mini">Full nutrient breakdown</div></div>
+              <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+              <div><div class="perk-title-mini">Full Breakdown</div><div class="perk-sub-mini">Why each score</div></div>
               <div class="perk-check-mini">✓</div>
             </div>
             <div class="perk-row-mini">
-              <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg></div>
-              <div><div class="perk-title-mini">Share with Friends</div><div class="perk-sub-mini">Send any scan to your crew</div></div>
+              <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <div><div class="perk-title-mini">Streak Freeze</div><div class="perk-sub-mini">Auto-protect streak</div></div>
               <div class="perk-check-mini">✓</div>
             </div>
           </div>
         </div>
 
-        <!-- Duplicate set for infinite scroll -->
+        <!-- Duplicates for infinite scroll -->
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen screen-scanner">
@@ -775,32 +753,33 @@
             <div class="screen-header">RED FLAGS</div>
             <div class="flag-group-mini">
               <div class="flag-group-mini-label">SEED OILS</div>
-              <span class="flag-chip-mini">Canola Oil</span>
               <span class="flag-chip-mini">Soybean Oil</span>
+              <span class="flag-chip-mini">Palm Oil</span>
             </div>
             <div class="flag-group-mini" style="margin-top:8px">
-              <div class="flag-group-mini-label">ADDITIVES</div>
-              <span class="flag-chip-mini">Carrageenan</span>
-              <span class="flag-chip-mini">Maltodextrin</span>
+              <div class="flag-group-mini-label">SWEETENERS</div>
+              <span class="flag-chip-mini">Sucralose</span>
+              <span class="flag-chip-mini">Acesulfame K</span>
             </div>
             <div class="verdict-card-mini" style="margin-top:8px">
               <div class="verdict-bar-mini"></div>
-              <div class="verdict-text-mini">Linoleic acid load drives bloat score down 18 points.</div>
+              <div class="verdict-text-mini">Artificial sweeteners alter gut microbiome. Bloat score docked 18 points.</div>
             </div>
           </div>
         </div>
         <div class="phone">
           <div class="phone-notch"></div>
-          <div class="phone-screen screen-alts">
-            <div class="screen-header">SHARE WITH FRIENDS</div>
-            <div class="alt-card-mini" style="text-align:center;padding:14px 12px;">
-              <div class="ab" style="margin-bottom:6px;">CHOBANI · L 84 · S 78 · B 72</div>
-              <div class="an" style="font-size:10px;line-height:1.4;">Send this scan to your group chat — let them see what you're eating before you commit.</div>
-            </div>
-            <div class="alt-card-mini" style="margin-top:6px;display:flex;gap:6px;justify-content:center;">
-              <div style="flex:1;text-align:center;font-size:9px;font-weight:700;letter-spacing:0.5px;color:#4ADE80;padding:8px 4px;border:1px solid rgba(74,222,128,0.3);border-radius:8px;">iMESSAGE</div>
-              <div style="flex:1;text-align:center;font-size:9px;font-weight:700;letter-spacing:0.5px;color:#4ADE80;padding:8px 4px;border:1px solid rgba(74,222,128,0.3);border-radius:8px;">COPY LINK</div>
-              <div style="flex:1;text-align:center;font-size:9px;font-weight:700;letter-spacing:0.5px;color:#4ADE80;padding:8px 4px;border:1px solid rgba(74,222,128,0.3);border-radius:8px;">MORE</div>
+          <div class="phone-screen screen-sage">
+            <div class="sage-header-mini">SAGE</div>
+            <div class="sage-face-mini" style="background:linear-gradient(135deg,#60A5FA,#3b82f6)">😰</div>
+            <div class="sage-mood-mini" style="color:#60A5FA">INFLAMED</div>
+            <div class="sage-moods-grid" style="margin-top:10px">
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#4ADE80"></div>Thriving</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#FF8C42"></div>At peace</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#9A938A"></div>Waiting</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#A78BFA"></div>Gut-stressed</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#60A5FA"></div>Inflamed</div>
+              <div class="sage-mood-dot-mini"><div class="dot" style="background:#FFC857"></div>Ascended</div>
             </div>
           </div>
         </div>
@@ -808,20 +787,20 @@
           <div class="phone-notch"></div>
           <div class="phone-screen screen-sub">
             <div class="premium-badge-mini">★ PREMIUM</div>
-            <div class="sub-hero-title">Know exactly what you're eating.</div>
+            <div class="sub-hero-title">Scan any food. See exactly what it does.</div>
             <div class="perk-row-mini">
               <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-              <div><div class="perk-title-mini">Unlimited Scans</div><div class="perk-sub-mini">No daily cap</div></div>
+              <div><div class="perk-title-mini">Unlimited Scans</div><div class="perk-sub-mini">Free: 3/day</div></div>
               <div class="perk-check-mini">✓</div>
             </div>
             <div class="perk-row-mini">
-              <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h2M19 12h2M12 3v2M12 19v2"/></svg></div>
-              <div><div class="perk-title-mini">Deep Analysis</div><div class="perk-sub-mini">Full nutrient breakdown</div></div>
+              <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+              <div><div class="perk-title-mini">Full Breakdown</div><div class="perk-sub-mini">Why each score</div></div>
               <div class="perk-check-mini">✓</div>
             </div>
             <div class="perk-row-mini">
-              <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-              <div><div class="perk-title-mini">Share with Friends</div><div class="perk-sub-mini">Send any scan to your crew</div></div>
+              <div class="perk-icon-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <div><div class="perk-title-mini">Streak Freeze</div><div class="perk-sub-mini">Auto-protect streak</div></div>
               <div class="perk-check-mini">✓</div>
             </div>
           </div>
@@ -831,106 +810,39 @@
     </div>
   </section>
 
-  <!-- DOWNLOAD -->
-  <section class="download-section" id="download">
-    <h2>Download the App</h2>
-    <div class="download-badge-row">
-      <a class="appstore-badge" href="https://apps.apple.com/app/id000000000" style="transform:scale(1.2)">
-        <svg viewBox="0 0 814 1000" xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;fill:#fff" aria-hidden="true">
-          <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105-37.3-150.3-93c-52.2-63.2-96-162.8-96-257.4C0 388.5 41.3 237 138.5 166.8c47.3-33.7 107.5-55.2 171.5-55.2 63.7 0 107.8 38.2 168.2 38.2 60.7 0 113.4-40.8 181.7-40.8 25.9 0 106.3 2.5 160.4 74.5z"/>
-        </svg>
-        <div class="appstore-badge-text">
-          <small>DOWNLOAD ON THE</small>
-          <strong>App Store</strong>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features-section" id="features">
-    <p class="section-eyebrow">FEATURES</p>
-    <h2 class="features-title">Stop guessing at nutrition labels.</h2>
-    <p class="features-subtitle">Every scan returns the same analysis a registered dietitian would run — in under two seconds.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M7 6V4h10v2"/><circle cx="12" cy="12.5" r="3.5"/></svg>
-        </div>
-        <div class="feature-title">Barcode Scanner</div>
-        <div class="feature-desc">Point and scan any packaged food. Results pulled from a 2.5M-product database in under two seconds.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg class="ico" viewBox="0 0 24 24"><path d="M3 12h3l3-9 6 18 3-9h3"/></svg>
-        </div>
-        <div class="feature-title">Body Impact Scores</div>
-        <div class="feature-desc">Three numbers out of 100 — leanness, skin clarity, bloat — derived from macro/micro composition and ingredient quality.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg class="ico" viewBox="0 0 24 24"><path d="M4 21V4l4 2 4-2 4 2 4-2v13l-4 2-4-2-4 2-4-2z"/><line x1="12" y1="8" x2="12" y2="14"/><line x1="12" y1="16" x2="12" y2="17"/></svg>
-        </div>
-        <div class="feature-title">Red Flag Detection</div>
-        <div class="feature-desc">Auto-flags seed oils, emulsifiers, refined sugars, and ultra-processed markers most apps don't surface.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg class="ico" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3v1a4 4 0 0 0 8 0v-1a3 3 0 0 0 3-3v-3a3 3 0 0 0-3-3V7a4 4 0 0 0-4-4z"/><path d="M9 11h6M9 14h4"/></svg>
-        </div>
-        <div class="feature-title">Plain-English Verdict</div>
-        <div class="feature-desc">A two-sentence summary citing the specific ingredients and macros that drove each score. No hand-waving.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg class="ico" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
-        </div>
-        <div class="feature-title">Share with Friends</div>
-        <div class="feature-desc">Send any scan to a friend in one tap. Group chats roast each other's snack picks now.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg class="ico" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><line x1="8" y1="14" x2="16" y2="14"/></svg>
-        </div>
-        <div class="feature-title">Scan History</div>
-        <div class="feature-desc">Every scan saved. Spot patterns across weeks — what's actually driving your bloat or skin breakouts.</div>
-      </div>
-    </div>
-  </section>
-
   <!-- HOW IT WORKS -->
   <section class="how-section" id="how">
     <div class="how-inner">
-      <p class="section-eyebrow" style="margin-bottom: 16px;">HOW IT WORKS</p>
-      <h2 class="how-title">Three steps to clarity</h2>
+      <p class="section-eyebrow">HOW IT WORKS</p>
+      <h2 class="how-title">Three steps. Three seconds.</h2>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-title">Scan</div>
-          <div class="step-desc">Point your camera at any food barcode. We handle the rest.</div>
+          <div class="step-desc">Point your camera at any barcode. Takes one second.</div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <div class="step-title">Analyze</div>
-          <div class="step-desc">Our model scores leanness, skin, and bloat — plus flags hidden ingredients.</div>
+          <div class="step-title">Score</div>
+          <div class="step-desc">Three scores out of 100: leanness, skin clarity, bloat. Plus flagged ingredients that are hurting you.</div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-title">Decide</div>
-          <div class="step-desc">Act on the verdict, send it to a friend, or save it to history.</div>
+          <div class="step-desc">Buy it or skip it. You now know exactly what it does to your face.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SCORES -->
-  <section style="padding:100px 24px; border-bottom:1px solid var(--border-subtle);">
-    <div class="scores-section" style="padding:0; margin:0 auto;">
+  <!-- THE THREE SCORES -->
+  <section style="padding:100px 24px; border-bottom:1px solid var(--line);">
+    <div class="scores-section" style="padding:0; margin:0 auto;" id="scores">
       <div class="scores-layout">
         <div class="scores-text">
           <p class="section-eyebrow">BODY IMPACT SCORES</p>
-          <h2 class="section-title">What the scores actually mean</h2>
-          <p class="scores-desc">Three numbers out of 100 based on macronutrient profile, ingredient quality, and physiological response data. Higher is better.</p>
+          <h2 class="section-title">Three numbers. Real answers.</h2>
+          <p class="scores-desc">Most apps count calories. Glowscore answers the question you're actually asking: will this make me look better or worse?</p>
           <div class="score-rows">
             <div class="score-row-item">
               <div class="score-row-badge" style="background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.2)">
@@ -938,25 +850,25 @@
               </div>
               <div>
                 <div class="score-row-label" style="color:#4ADE80">Leanness</div>
-                <div class="score-row-desc">Protein density, fiber per calorie, and absence of refined carbs that spike insulin.</div>
+                <div class="score-row-desc">Protein density, fiber load, and absence of insulin-spiking refined carbs. Higher = this food works with your body composition.</div>
               </div>
             </div>
             <div class="score-row-item">
-              <div class="score-row-badge" style="background:rgba(56,184,245,0.1); border:1px solid rgba(56,184,245,0.2)">
-                <span style="color:#38B8F5">S</span>
+              <div class="score-row-badge" style="background:rgba(245,185,71,0.1); border:1px solid rgba(245,185,71,0.2)">
+                <span style="color:#F5B947">S</span>
               </div>
               <div>
-                <div class="score-row-label" style="color:#38B8F5">Skin</div>
-                <div class="score-row-desc">Antioxidant load, omega-3:omega-6 ratio, and dairy/sugar content linked to acne in dermatology literature.</div>
+                <div class="score-row-label" style="color:#F5B947">Skin</div>
+                <div class="score-row-desc">Omega-3:omega-6 ratio, antioxidant load, and dairy/sugar content linked to acne in dermatology research. Higher = clearer skin.</div>
               </div>
             </div>
             <div class="score-row-item">
-              <div class="score-row-badge" style="background:rgba(245,197,58,0.1); border:1px solid rgba(245,197,58,0.2)">
-                <span style="color:#F5C53A">B</span>
+              <div class="score-row-badge" style="background:rgba(255,90,60,0.1); border:1px solid rgba(255,90,60,0.2)">
+                <span style="color:#FF5A3C">B</span>
               </div>
               <div>
-                <div class="score-row-label" style="color:#F5C53A">Bloat</div>
-                <div class="score-row-desc">FODMAP load, sodium, emulsifier content, and other GI irritants flagged in clinical trials.</div>
+                <div class="score-row-label" style="color:#FF5A3C">Bloat</div>
+                <div class="score-row-desc">FODMAP load, sodium, emulsifier content. Higher = your stomach stays flat.</div>
               </div>
             </div>
           </div>
@@ -991,21 +903,21 @@
                 <div class="bps-metric">
                   <div class="bps-metric-top" style="background:transparent"></div>
                   <div class="bps-metric-label">SKIN</div>
-                  <div class="bps-metric-track"><div class="bps-metric-fill" style="width:38%;background:#FB923C"></div></div>
-                  <div class="bps-metric-score" style="color:#FB923C">38</div>
+                  <div class="bps-metric-track"><div class="bps-metric-fill" style="width:38%;background:#FF6B5A"></div></div>
+                  <div class="bps-metric-score" style="color:#FF6B5A">38</div>
                   <div class="bps-metric-max">/100</div>
                 </div>
                 <div class="bps-metric">
                   <div class="bps-metric-top" style="background:transparent"></div>
                   <div class="bps-metric-label">BLOAT</div>
-                  <div class="bps-metric-track"><div class="bps-metric-fill" style="width:55%;background:#FB923C"></div></div>
-                  <div class="bps-metric-score" style="color:#FB923C">55</div>
+                  <div class="bps-metric-track"><div class="bps-metric-fill" style="width:55%;background:#F5B947"></div></div>
+                  <div class="bps-metric-score" style="color:#F5B947">55</div>
                   <div class="bps-metric-max">/100</div>
                 </div>
               </div>
               <div class="bps-verdict">
                 <div class="bps-verdict-bar"></div>
-                <div class="bps-verdict-text">Sunflower oil contributes ~14g linoleic acid per serving, dragging skin and leanness down. Avocado-oil chips score ~30 points higher.</div>
+                <div class="bps-verdict-text">Sunflower oil contributes ~14g linoleic acid per serving, dragging skin score down. Avocado-oil chips score ~30 points higher.</div>
               </div>
             </div>
           </div>
@@ -1014,33 +926,47 @@
     </div>
   </section>
 
+  <!-- MEET SAGE -->
+  <section class="sage-section" id="sage">
+    <div class="sage-inner">
+      <div class="sage-text">
+        <p class="section-eyebrow">MEET SAGE</p>
+        <h2 class="section-title">Your food has a face now.</h2>
+        <p class="sage-body">Every food you scan affects Sage. Eat clean all day and it glows. One bad meal and you'll see it. By the end of the day, Sage is an honest read of how you actually ate — not how you meant to.</p>
+        <p class="sage-body">It resets each morning. The streak is yours to keep or break — and if you miss a day, streak freeze has your back.</p>
+        <p class="sage-body">Premium unlocks <strong>Week in Review</strong>: a 7-day strip showing exactly how Sage looked each day, plus a plain-English insight on what's dragging your scores down.</p>
+      </div>
+      <div class="sage-visual">
+        <video class="sage-video" src="SageFullAnimPingPong.mp4" autoplay loop muted playsinline></video>
+      </div>
+    </div>
+  </section>
+
   <!-- METHODOLOGY -->
   <section class="method-section" id="method">
     <p class="section-eyebrow">METHODOLOGY</p>
-    <h2 class="section-title">How we score food</h2>
-    <p class="section-subtitle">No black box. Every score is a deterministic function of ingredients and macros, anchored in published research.</p>
+    <h2 class="section-title">Not vibes. Not AI hallucinations.</h2>
+    <p class="section-subtitle">Every score is a deterministic calculation from the ingredient list and nutrition panel. Same food always returns the same score.</p>
     <div class="method-grid">
       <div class="method-card">
         <div class="method-num">01 · INPUT</div>
         <h3>Open Food Facts + USDA</h3>
-        <p>2.5M+ products. Ingredient lists, macro/micro panels, serving sizes. Open data, auditable.</p>
-        <a href="https://world.openfoodfacts.org" target="_blank" rel="noopener">Source database →</a>
+        <p>2.5M+ products. Ingredient lists, macro/micro panels, serving sizes. Open data, fully auditable.</p>
       </div>
       <div class="method-card">
         <div class="method-num">02 · WEIGHTING</div>
-        <h3>Peer-reviewed weights</h3>
-        <p>Each ingredient and nutrient carries a coefficient set from meta-analyses on satiety, glycemic response, and inflammation.</p>
-        <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener">PubMed references →</a>
+        <h3>Peer-reviewed coefficients</h3>
+        <p>Each ingredient and nutrient carries a weight from meta-analyses on satiety, glycemic response, and inflammation. PubMed-sourced.</p>
       </div>
       <div class="method-card">
         <div class="method-num">03 · OUTPUT</div>
         <h3>Three normalized scores</h3>
-        <p>Leanness, skin, bloat — each rescaled 0–100 against the full product distribution. Same input always returns the same score.</p>
+        <p>Each score rescaled 0–100 against the full product distribution. Not relative to your diet — absolute against the universe of scanned foods.</p>
       </div>
       <div class="method-card">
         <div class="method-num">04 · UPDATES</div>
         <h3>Monthly re-calibration</h3>
-        <p>New studies trigger coefficient updates. Changelog published in-app so you can see what moved and why.</p>
+        <p>New studies move coefficients. Changelog published in-app. You can see exactly what changed and why.</p>
       </div>
     </div>
   </section>
@@ -1048,80 +974,34 @@
   <!-- COMPARISON -->
   <section class="compare-section">
     <p class="section-eyebrow">VS THE ALTERNATIVES</p>
-    <h2 class="section-title">Why not just use Yuka or MyFitnessPal?</h2>
-    <p class="section-subtitle">Generic nutrition apps optimize for calories or a single composite score. FoodScanner answers the question you actually care about: how will this food make me feel and look?</p>
+    <h2 class="section-title">Why not just use Yuka?</h2>
+    <p class="section-subtitle">Yuka gives one black-box score. MyFitnessPal counts calories. Neither tells you what that granola bar is doing to your skin.</p>
     <table class="compare-table">
       <thead>
         <tr>
-          <th>Feature</th>
-          <th class="us">FoodScanner</th>
+          <th></th>
+          <th class="us">Glowscore</th>
           <th>Yuka</th>
           <th>MyFitnessPal</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td class="feature">Body-specific scores (skin, bloat, leanness)</td><td class="us"><span class="compare-yes">✓</span></td><td><span class="compare-no">✗</span></td><td><span class="compare-no">✗</span></td></tr>
-        <tr><td class="feature">Seed oil / emulsifier flags</td><td class="us"><span class="compare-yes">✓</span></td><td class="dim">Partial</td><td><span class="compare-no">✗</span></td></tr>
-        <tr><td class="feature">Share scans with friends</td><td class="us"><span class="compare-yes">✓</span></td><td><span class="compare-no">✗</span></td><td class="dim">Partial</td></tr>
+        <tr><td class="feature">Skin / bloat / leanness scores</td><td class="us"><span class="compare-yes">✓</span></td><td><span class="compare-no">✗</span></td><td><span class="compare-no">✗</span></td></tr>
+        <tr><td class="feature">Seed oil + emulsifier flags</td><td class="us"><span class="compare-yes">✓</span></td><td class="dim">Partial</td><td><span class="compare-no">✗</span></td></tr>
         <tr><td class="feature">Methodology published with citations</td><td class="us"><span class="compare-yes">✓</span></td><td><span class="compare-no">✗</span></td><td><span class="compare-no">✗</span></td></tr>
+        <tr><td class="feature">Mascot that reflects your eating habits</td><td class="us"><span class="compare-yes">✓</span></td><td><span class="compare-no">✗</span></td><td><span class="compare-no">✗</span></td></tr>
+        <tr><td class="feature">Streak protection + weekly habit insights</td><td class="us"><span class="compare-yes">✓</span></td><td><span class="compare-no">✗</span></td><td><span class="compare-no">✗</span></td></tr>
         <tr><td class="feature">No ads, ever</td><td class="us"><span class="compare-yes">✓</span></td><td><span class="compare-no">✗</span></td><td><span class="compare-no">✗</span></td></tr>
       </tbody>
     </table>
-  </section>
-
-  <!-- PERKS -->
-  <section class="perks-section" style="padding-top:80px">
-    <p class="perks-label">WHAT YOU GET WITH PREMIUM</p>
-    <div class="perks-list">
-      <div class="perk-row">
-        <div class="perk-icon-wrap"><svg class="ico" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <div class="perk-text">
-          <div class="perk-title">Unlimited Scans</div>
-          <div class="perk-desc">No daily cap — scan every meal, every snack, every grocery trip</div>
-        </div>
-        <div class="perk-check">✓</div>
-      </div>
-      <div class="perk-row">
-        <div class="perk-icon-wrap"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 12h2M19 12h2M12 3v2M12 19v2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></svg></div>
-        <div class="perk-text">
-          <div class="perk-title">Deep Micronutrient Analysis</div>
-          <div class="perk-desc">Full vitamin, mineral &amp; macro breakdown per scan</div>
-        </div>
-        <div class="perk-check">✓</div>
-      </div>
-      <div class="perk-row">
-        <div class="perk-icon-wrap"><svg class="ico" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-        <div class="perk-text">
-          <div class="perk-title">Lifetime Scan History</div>
-          <div class="perk-desc">Every scan saved forever, not just 7 days</div>
-        </div>
-        <div class="perk-check">✓</div>
-      </div>
-      <div class="perk-row">
-        <div class="perk-icon-wrap"><svg class="ico" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg></div>
-        <div class="perk-text">
-          <div class="perk-title">Share with Friends</div>
-          <div class="perk-desc">Send any scan to your group chat in one tap — link or screenshot</div>
-        </div>
-        <div class="perk-check">✓</div>
-      </div>
-      <div class="perk-row">
-        <div class="perk-icon-wrap"><svg class="ico" viewBox="0 0 24 24"><path d="M3 12h3l3-9 6 18 3-9h3"/></svg></div>
-        <div class="perk-text">
-          <div class="perk-title">Body Impact Scores</div>
-          <div class="perk-desc">Leanness, skin clarity, and bloat ratings on every scan</div>
-        </div>
-        <div class="perk-check">✓</div>
-      </div>
-    </div>
   </section>
 
   <!-- PRICING -->
   <section class="pricing-section" id="pricing">
     <div class="pricing-inner">
       <p class="pricing-eyebrow">★ PREMIUM</p>
-      <h2 class="pricing-title">Cheaper than one bad lunch</h2>
-      <p class="pricing-subtitle">Science-backed analysis on every scan. No guessing. Cancel anytime.</p>
+      <h2 class="pricing-title">Cheaper than one bad lunch.</h2>
+      <p class="pricing-subtitle">Unlimited scans, full breakdowns, streak protection, lifetime history. Cancel anytime.</p>
       <div class="pricing-cards">
         <div class="pricing-card featured">
           <div class="pricing-card-glow"></div>
@@ -1130,36 +1010,88 @@
           <div class="pricing-plan-billing">Billed once per year</div>
           <div><span class="pricing-price">$59.99</span><span class="pricing-per">/year</span></div>
           <div class="pricing-permonth">≈ $5.00/mo</div>
-          <a class="pricing-card-cta" href="https://apps.apple.com/app/id000000000">START FREE TRIAL</a>
+          <a class="pricing-card-cta" href="#">GET ANNUAL</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-plan-name">Monthly</div>
           <div class="pricing-plan-billing">Billed every month</div>
           <div><span class="pricing-price">$8.99</span><span class="pricing-per">/month</span></div>
           <div class="pricing-permonth">No commitment</div>
-          <a class="pricing-card-cta" href="https://apps.apple.com/app/id000000000">CHOOSE MONTHLY</a>
+          <a class="pricing-card-cta" href="#">CHOOSE MONTHLY</a>
         </div>
       </div>
-      <div class="pricing-legal">7-day free trial, then $59.99/year on the annual plan.<br>Cancel anytime in App Store settings.</div>
-      <div class="pricing-trust">
-        <div class="pricing-trust-item"><span class="pricing-trust-check">✓</span> No ads, ever</div>
-        <div class="pricing-trust-item"><span class="pricing-trust-check">✓</span> Cancel anytime</div>
-        <div class="pricing-trust-item"><span class="pricing-trust-check">✓</span> Data never sold</div>
+      <div class="perks-list-pricing">
+        <div class="perk-row-pricing">
+          <div class="perk-emoji">⚡</div>
+          <div class="perk-text-pricing">
+            <div class="perk-title-pricing">Unlimited Scans</div>
+            <div class="perk-desc-pricing">No daily cap — scan every meal, every snack (free: 3/day)</div>
+          </div>
+        </div>
+        <div class="perk-row-pricing">
+          <div class="perk-emoji">🔬</div>
+          <div class="perk-text-pricing">
+            <div class="perk-title-pricing">Full Score Breakdown</div>
+            <div class="perk-desc-pricing">Detailed reasons behind every leanness, skin, and bloat score</div>
+          </div>
+        </div>
+        <div class="perk-row-pricing">
+          <div class="perk-emoji">🚩</div>
+          <div class="perk-text-pricing">
+            <div class="perk-title-pricing">Red Flag Intel</div>
+            <div class="perk-desc-pricing">Exactly why each flagged ingredient hurts your skin, bloat, or leanness</div>
+          </div>
+        </div>
+        <div class="perk-row-pricing">
+          <div class="perk-emoji">📂</div>
+          <div class="perk-text-pricing">
+            <div class="perk-title-pricing">Lifetime Scan History</div>
+            <div class="perk-desc-pricing">Every scan saved forever — free plan keeps last 7</div>
+          </div>
+        </div>
+        <div class="perk-row-pricing">
+          <div class="perk-emoji">🧠</div>
+          <div class="perk-text-pricing">
+            <div class="perk-title-pricing">Personalized Ingredient Intel</div>
+            <div class="perk-desc-pricing">All Learn articles matched to foods you actually scan (free: 1)</div>
+          </div>
+        </div>
+        <div class="perk-row-pricing">
+          <div class="perk-emoji">🧊</div>
+          <div class="perk-text-pricing">
+            <div class="perk-title-pricing">Streak Freeze Protection</div>
+            <div class="perk-desc-pricing">Miss a day and your streak survives automatically (free: 1 lifetime freeze)</div>
+          </div>
+        </div>
+        <div class="perk-row-pricing">
+          <div class="perk-emoji">📅</div>
+          <div class="perk-text-pricing">
+            <div class="perk-title-pricing">Sage Week in Review</div>
+            <div class="perk-desc-pricing">See how Sage looked every day this week, plus weekly pattern insights</div>
+          </div>
+        </div>
       </div>
+      <div class="pricing-trust">
+        <span class="pricing-trust-check">✓</span> No ads, ever
+        <span style="color:var(--ink-faint)">·</span>
+        <span class="pricing-trust-check">✓</span> Cancel anytime
+        <span style="color:var(--ink-faint)">·</span>
+        <span class="pricing-trust-check">✓</span> Data never sold
+      </div>
+      <div class="pricing-free-note">Free plan: 3 scans/day · 7-day history · 1 alternative · 1 streak freeze · 1 personalized article</div>
     </div>
   </section>
 
   <!-- FOUNDER -->
   <section class="founder-section">
     <p class="section-eyebrow" style="text-align:center;">FROM THE BUILDER</p>
-    <h2 class="section-title" style="text-align:center;">Why this exists</h2>
+    <h2 class="section-title" style="text-align:center;">Why this exists.</h2>
     <div class="founder-card" style="margin-top:32px;">
       <div class="founder-avatar">E</div>
       <div class="founder-text">
-        <p>I spent two years tracking what I ate without ever knowing why a "healthy" granola bar still made me bloated, or why Greek yogurt cleared my skin and oat-milk lattes wrecked it. Generic nutrition apps don't answer that — they just count calories.</p>
-        <p>FoodScanner is the tool I wished existed: scan, see how the food actually hits your body, decide for yourself. Every score is reproducible from the ingredient list. No vibes, no influencers, no ads.</p>
-        <div class="sig">Evan W.</div>
-        <div class="role">Founder &amp; Builder</div>
+        <p>I spent two years eating "healthy" and still breaking out, still bloated, still wondering what was actually doing it. Generic nutrition apps just count calories — they don't tell you that the granola bar's sunflower oil is trashing your skin score, or that the Greek yogurt is one of the cleanest things you can eat for your face.</p>
+        <p>Glowscore is what I built to answer that question once and for all. Scan it, see the number, know why.</p>
+        <div class="sig">— Evan W., Founder</div>
       </div>
     </div>
   </section>
@@ -1167,35 +1099,35 @@
   <!-- FAQ -->
   <section class="faq-section" id="faq">
     <p class="section-eyebrow" style="text-align:center;">FAQ</p>
-    <h2 class="section-title" style="text-align:center;">Questions, answered straight</h2>
+    <h2 class="section-title" style="text-align:center;">Questions, answered straight.</h2>
     <div class="faq-list">
       <details class="faq-item">
         <summary>Is this just Yuka with a different coat of paint?</summary>
-        <div class="faq-body">No. Yuka returns one composite "health" score. FoodScanner returns three independent scores tied to outcomes you can feel — leanness, skin, bloat — and lets you share scans with friends so you can compare notes.</div>
+        <div class="faq-body">No. Yuka gives one composite score. Glowscore gives three scores tied to specific body outcomes — skin, bloat, leanness — and a mascot that reflects your eating habits in real time.</div>
       </details>
       <details class="faq-item">
-        <summary>Where do the scores actually come from?</summary>
-        <div class="faq-body">A deterministic formula over the ingredient list and macro/micro panel. Coefficients come from meta-analyses on satiety (leanness), dermatology research on diet-acne links (skin), and GI clinical trials on FODMAPs and emulsifiers (bloat). Same input → same score, every time. Methodology section above has source links.</div>
+        <summary>Where do scores actually come from?</summary>
+        <div class="faq-body">A deterministic formula over the ingredient list and macro panel. Coefficients from meta-analyses on satiety, dermatology research on diet-acne links, and GI clinical trials on FODMAPs. Same input → same score, always.</div>
       </details>
       <details class="faq-item">
-        <summary>Does it work for restaurant food or just packaged products?</summary>
-        <div class="faq-body">Barcoded packaged food is the strongest case — 2.5M products covered. Restaurant dishes work via menu lookup for chains; one-off independent restaurants are best-effort and we tell you when confidence is low.</div>
+        <summary>Does it work for restaurant food?</summary>
+        <div class="faq-body">Barcoded packaged food is the strongest case — 2.5M products covered. Restaurant chains work via menu lookup. Independent restaurants are best-effort.</div>
       </details>
       <details class="faq-item">
         <summary>Is the AI making stuff up?</summary>
-        <div class="faq-body">Scores are not generated by an LLM. They're a deterministic calculation on ingredients and macros. The plain-English verdict is generated, but it's constrained to cite the actual ingredients and nutrients that drove the score — it can't invent flags that aren't on the label.</div>
+        <div class="faq-body">Scores are not LLM-generated. They're a deterministic calculation. The plain-English verdict is AI-generated but constrained to only cite ingredients and nutrients that actually drove the score.</div>
       </details>
       <details class="faq-item">
         <summary>What's free vs paid?</summary>
-        <div class="faq-body">Free: 5 scans/day, body impact scores, sharing, 7-day history. Premium ($5/mo annual): unlimited scans, deep micronutrient breakdown, lifetime history.</div>
+        <div class="faq-body">Free: 3 scans/day (unlimited on day 1), last 7 scans saved, 1 alternative suggestion, 1 personalized article, 1 lifetime streak freeze, flag names only (no explanations), score numbers only (no breakdown text). Premium ($5/mo annual): unlimited scans, lifetime history, full score breakdowns, red flag explanations, all personalized articles, unlimited streak freeze protection, Sage Week in Review.</div>
       </details>
       <details class="faq-item">
         <summary>Do you sell my data?</summary>
-        <div class="faq-body">No. Scan history stays on-device by default; cloud sync is opt-in and encrypted. Zero ad networks, zero analytics SDKs that resell behavior. Privacy policy is short and in plain English.</div>
+        <div class="faq-body">No. No ad networks, no analytics SDKs that resell behavior. Privacy policy is short and plain English.</div>
       </details>
       <details class="faq-item">
         <summary>Android?</summary>
-        <div class="faq-body">iOS first. Android is on the roadmap once iOS retention crosses target. Drop your email in the App Store reviews and we'll see it.</div>
+        <div class="faq-body">iOS first. Android is on the roadmap.</div>
       </details>
     </div>
   </section>
@@ -1205,35 +1137,33 @@
     <div class="footer-inner">
       <div class="footer-col">
         <a class="footer-brand" href="#">
-          <div class="footer-brand-box"><img src="logo.jpg" alt="FoodScanner logo" /></div>
-          <span class="footer-brand-name">FoodScanner</span>
+          <div class="footer-brand-box"><img src="logo.jpg" alt="glowscore logo" /></div>
+          <span class="footer-brand-name">glowscore</span>
         </a>
-        <p class="footer-tagline">Body-impact scores for everything you eat. Built on peer-reviewed nutrition research.</p>
+        <p class="footer-tagline">Scan any food. See how it hits your face.</p>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
         <a href="#pricing">Pricing</a>
-        <a href="https://apps.apple.com/app/id000000000">App Store</a>
+        <a href="#">App Store</a>
       </div>
       <div class="footer-col">
         <h4>Trust</h4>
         <a href="#method">Methodology</a>
         <a href="#faq">FAQ</a>
-        <a href="https://evan1w.github.io/foodscanner-legal/privacy.html">Privacy</a>
-        <a href="https://evan1w.github.io/foodscanner-legal/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="mailto:hello@foodscannerapp.com">hello@foodscannerapp.com</a>
-        <a href="mailto:support@foodscannerapp.com">Support</a>
-        <a href="mailto:press@foodscannerapp.com">Press</a>
+        <a href="mailto:hello@scanglowscore.com">hello@scanglowscore.com</a>
+        <a href="mailto:support@scanglowscore.com">support@scanglowscore.com</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© FoodScanner 2025 · Built by Evan W.</span>
-      <span>Not medical advice. Talk to a doctor for clinical decisions.</span>
+      <span>© 2026 W Labs LLC · Not medical advice.</span>
     </div>
   </footer>
 
